@@ -1,14 +1,46 @@
 from django.contrib import admin
-from django.contrib.auth import get_user_model
-from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.admin import UserAdmin as Admin
+from django.utils.translation import gettext_lazy as _
 
-from .forms import CustomUserCreationForm, CustomUserChangeForm
-from .models import CustomUser
+from .forms import CustomUserChangeForm, CustomUserCreationForm
+from .models import User
 
-class CustomUserAdmin(UserAdmin):
+
+class UserAdmin(Admin):
     add_form = CustomUserCreationForm
     form = CustomUserChangeForm
-    model = CustomUser
-    list_display = ['email', 'username',]
+    model = User
+    fieldsets = (
+        (None, {"fields": ("email", "password")}),
+        (_("Personal info"), {"fields": ("full_name",)}),
+        (
+            _("Permissions"),
+            {
+                "fields": (
+                    "is_active",
+                    "is_staff",
+                    "is_superuser",
+                    "groups",
+                    "user_permissions",
+                ),
+            },
+        ),
+        (_("Important dates"), {"fields": ("last_login", "date_joined")}),
+    )
+    add_fieldsets = (
+        (
+            None,
+            {
+                "classes": ("wide",),
+                "fields": ("email", "password1", "password2"),
+            },
+        ),
+    )
+    search_fields = ("full_name", "email")
+    list_display = ["id", "email", "full_name", "is_active", "is_superuser"]
 
-admin.site.register(CustomUser, CustomUserAdmin)
+    list_display_links = ("id", "email")
+    ordering = ["-pk"]
+
+
+admin.site.register(User, UserAdmin)

@@ -10,3 +10,8 @@ __pycache__/
 *.log
 db.sqlite3
 media
+
+#Pycharm
+.idea/
+
+Pipfile*
