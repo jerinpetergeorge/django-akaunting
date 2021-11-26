@@ -5,7 +5,7 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 # https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-SECRET_KEY
-SECRET_KEY = "43)%4yx)aa@a=+_c(fn&kf3g29xax+=+a&key9i=!98zyim=8j"
+SECRET_KEY = "v&asfg5!%%o*8ej21k0@njrzk(1-_#@d4a8-x23o=u1xyt%ztp"
 # https://docs.djangoproject.com/en/dev/ref/settings/#debug
 DEBUG = True
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
@@ -14,6 +14,16 @@ ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1"]
 # APPS
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
+THIRD_PARTY_APPS = [
+    "allauth",
+    "allauth.account",
+    "crispy_forms",
+    "debug_toolbar",
+]
+LOCAL_APPS = [
+    "accounts",
+    "pages",
+]
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -24,13 +34,9 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.sites",
     # Third-party
-    "allauth",
-    "allauth.account",
-    "crispy_forms",
-    "debug_toolbar",
+    *THIRD_PARTY_APPS,
     # Local
-    "accounts",
-    "pages",
+    *LOCAL_APPS,
 ]
 
 # MIDDLEWARE
@@ -89,7 +95,9 @@ DATABASES = {
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+        "NAME": (
+            "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
+        ),
     },
     {
         "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
@@ -116,14 +124,14 @@ USE_L10N = True
 # https://docs.djangoproject.com/en/dev/ref/settings/#use-tz
 USE_TZ = True
 
-
 # STATIC
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#static-root
 STATIC_ROOT = str(BASE_DIR.joinpath("staticfiles"))
 # https://docs.djangoproject.com/en/dev/ref/settings/#static-url
 STATIC_URL = "/static/"
-# https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
+# https://docs.djangoproject.com/en/dev/
+# ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
 STATICFILES_DIRS = [str(BASE_DIR.joinpath("static"))]
 # http://whitenoise.evans.io/en/stable/django.html#add-compression-and-caching-support
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
@@ -146,7 +154,8 @@ INTERNAL_IPS = ["127.0.0.1"]
 
 # CUSTOM USER MODEL CONFIGS
 # ------------------------------------------------------------------------------
-# https://docs.djangoproject.com/en/dev/topics/auth/customizing/#substituting-a-custom-user-model
+# https://docs.djangoproject.com/en/dev/
+# topics/auth/customizing/#substituting-a-custom-user-model
 AUTH_USER_MODEL = "accounts.User"
 
 # DJANGO-ALLAUTH CONFIGS
