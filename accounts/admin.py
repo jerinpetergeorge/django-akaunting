@@ -6,6 +6,7 @@ from .forms import CustomUserChangeForm, CustomUserCreationForm
 from .models import User
 
 
+@admin.register(User)
 class UserAdmin(Admin):
     add_form = CustomUserCreationForm
     form = CustomUserChangeForm
@@ -41,6 +42,3 @@ class UserAdmin(Admin):
 
     list_display_links = ("id", "email")
     ordering = ["-pk"]
-
-
-admin.site.register(User, UserAdmin)

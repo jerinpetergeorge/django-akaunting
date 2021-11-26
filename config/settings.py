@@ -21,10 +21,13 @@ THIRD_PARTY_APPS = [
     "crispy_forms",
     "debug_toolbar",
     "django_extensions",
+    "taggit",
 ]
 LOCAL_APPS = [
     "accounts",
     "pages",
+    "utils",
+    "categories",
     "organizations",
     "sales.revenues",
     "sales.customers",
@@ -143,6 +146,9 @@ STATICFILES_DIRS = [str(BASE_DIR.joinpath("static"))]
 # http://whitenoise.evans.io/en/stable/django.html#add-compression-and-caching-support
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
+# MEDIA
+MEDIA_ROOT = "media-files/"
+
 # DJANGO-CRISPY-FORMS CONFIGS
 # ------------------------------------------------------------------------------
 # https://django-crispy-forms.readthedocs.io/en/latest/install.html#template-packs
@@ -185,3 +191,8 @@ ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
+
+# Development Environment Items
+DEV_EMAIL = "jerinpetergeorge@gmail.com"
+DEV_PASSWORD = "password"
+DEV_FULL_NAME = "Jerin Peter George"
