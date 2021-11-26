@@ -13,3 +13,5 @@ media
 
 #Pycharm
 .idea/
+
+Pipfile*
