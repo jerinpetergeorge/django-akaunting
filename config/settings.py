@@ -15,14 +15,22 @@ ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1"]
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 THIRD_PARTY_APPS = [
+    "whitenoise.runserver_nostatic",
     "allauth",
     "allauth.account",
     "crispy_forms",
     "debug_toolbar",
+    "django_extensions",
 ]
 LOCAL_APPS = [
     "accounts",
     "pages",
+    "organizations",
+    "sales.revenues",
+    "sales.customers",
+    "purchases.bills",
+    "purchases.vendors",
+    "purchases.payments",
 ]
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -30,7 +38,6 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
-    "whitenoise.runserver_nostatic",
     "django.contrib.staticfiles",
     "django.contrib.sites",
     # Third-party

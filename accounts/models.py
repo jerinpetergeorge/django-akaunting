@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 from .manager import UserManager
 
@@ -9,9 +10,9 @@ class User(AbstractUser):
     last_name = None
     username = None
 
-    email = models.EmailField(unique=True)
-    full_name = models.CharField(max_length=150)
-    is_verified = models.BooleanField(default=False)
+    email = models.EmailField(_("email"), unique=True)
+    full_name = models.CharField(_("full name"), max_length=150)
+    is_verified = models.BooleanField(_("is verified?"), default=False)
 
     objects = UserManager()
 
