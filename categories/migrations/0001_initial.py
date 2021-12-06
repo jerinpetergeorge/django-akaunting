@@ -13,18 +13,18 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Organization',
+            name='Category',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('created', django_extensions.db.fields.CreationDateTimeField(auto_now_add=True, verbose_name='created')),
                 ('modified', django_extensions.db.fields.ModificationDateTimeField(auto_now=True, verbose_name='modified')),
-                ('name', models.CharField(max_length=100, verbose_name='Name')),
-                ('email', models.EmailField(max_length=254, unique=True, verbose_name='Email')),
+                ('name', models.CharField(max_length=50, verbose_name='Name')),
+                ('description', models.TextField(blank=True, verbose_name='Description')),
             ],
             options={
-                'verbose_name': 'Organization',
-                'verbose_name_plural': 'Organizations',
-                'db_table': 'Organization',
+                'verbose_name': 'Category',
+                'verbose_name_plural': 'Categories',
+                'db_table': 'Category',
             },
         ),
     ]

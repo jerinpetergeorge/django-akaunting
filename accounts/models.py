@@ -10,9 +10,9 @@ class User(AbstractUser):
     last_name = None
     username = None
 
-    email = models.EmailField(_("email"), unique=True)
-    full_name = models.CharField(_("full name"), max_length=150)
-    is_verified = models.BooleanField(_("is verified?"), default=False)
+    email = models.EmailField(_("Email"), unique=True)
+    full_name = models.CharField(_("Full Name"), max_length=150)
+    is_verified = models.BooleanField(_("Is Verified?"), default=False)
 
     objects = UserManager()
 
