@@ -60,7 +60,7 @@ class Env(_ENV):
                     cls.read_env(
                         root_loc=root_loc,
                         env_file=current_dir / env_file,
-                        overwrite=False,
+                        overwrite=overwrite,
                     )
             elif not line or line.startswith("#"):
                 # ignore warnings for empty line-breaks or comments
