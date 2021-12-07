@@ -1,9 +1,25 @@
 from pathlib import Path
 
-# GENERAL
+from utils.django_environ import environ
+
+env = environ.Env()
+
 # ------------------------------------------------------------------------------
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# option to attach an env file
+# default location is `.env-dir/local`
+# if file not found, simply ignored
+env.read_env(
+    root_loc=BASE_DIR,
+    env_file=env("ENV_FILE", default=".env-dir/.env.local"),
+    overwrite=True,
+)
+
+
+# GENERAL
+
 # https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-SECRET_KEY
 SECRET_KEY = "v&asfg5!%%o*8ej21k0@njrzk(1-_#@d4a8-x23o=u1xyt%ztp"
 # https://docs.djangoproject.com/en/dev/ref/settings/#debug
@@ -93,12 +109,7 @@ TEMPLATES = [
 # DATABASES
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
+DATABASES = {"default": env.db()}
 
 # PASSWORDS
 # ------------------------------------------------------------------------------
@@ -193,6 +204,6 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
 
 # Development Environment Items
-DEV_EMAIL = "jerinpetergeorge@gmail.com"
-DEV_PASSWORD = "password"
-DEV_FULL_NAME = "Jerin Peter George"
+DEV_EMAIL = env("DEV_EMAIL")
+DEV_PASSWORD = env("DEV_PASSWORD")
+DEV_FULL_NAME = env("DEV_FULL_NAME")
