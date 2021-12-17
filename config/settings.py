@@ -21,7 +21,8 @@ env.read_env(
 # GENERAL
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-SECRET_KEY
-SECRET_KEY = "v&asfg5!%%o*8ej21k0@njrzk(1-_#@d4a8-x23o=u1xyt%ztp"
+default_secret_key = "v&asfg5!%%o*8ej21k0@njrzk(1-_#@d4a8-x23o=u1xyt%ztp"
+SECRET_KEY = env("SECRET_KEY", default=default_secret_key)
 # https://docs.djangoproject.com/en/dev/ref/settings/#debug
 DEBUG = True
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
