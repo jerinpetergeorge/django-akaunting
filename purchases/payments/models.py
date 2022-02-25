@@ -13,6 +13,7 @@ class Payment(TimeStampedModel):
         CASH = "cash", _("Cash")
         BANK_TRANSFER = "bank_transfer", _("Bank Transfer")
 
+    item = models.CharField(max_length=250, default="")
     amount = models.FloatField(_("Amount"))
     date = models.DateField(_("Date"))
     description = models.TextField(_("Description"), blank=True)
