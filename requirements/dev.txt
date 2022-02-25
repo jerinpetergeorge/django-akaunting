@@ -3,5 +3,5 @@
 -r test.txt
 
 
-django-debug-toolbar
+
 pre-commit
