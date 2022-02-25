@@ -13,8 +13,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # if file not found, simply ignored
 env.read_env(
     root_loc=BASE_DIR,
-    env_file=env("ENV_FILE", default=".env-dir/.env.local"),
-    overwrite=True,
+    env_file=env("ENV_FILE", default=".env-dir/.env.base"),
 )
 
 # GENERAL
@@ -23,9 +22,14 @@ env.read_env(
 default_secret_key = "v&asfg5!%%o*8ej21k0@njrzk(1-_#@d4a8-x23o=u1xyt%ztp"
 SECRET_KEY = env("SECRET_KEY", default=default_secret_key)
 # https://docs.djangoproject.com/en/dev/ref/settings/#debug
-DEBUG = True
+DEBUG = env("DEBUG", cast=bool, default=False)
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1"]
+ALLOWED_HOSTS = [
+    "localhost",
+    "0.0.0.0",
+    "127.0.0.1",
+    *env.list("ALLOWED_HOSTS", default=[]),
+]
 
 # APPS
 # ------------------------------------------------------------------------------
@@ -34,6 +38,7 @@ THIRD_PARTY_APPS = [
     "whitenoise.runserver_nostatic",
     "allauth",
     "allauth.account",
+    "allauth.socialaccount",
     "crispy_forms",
     "debug_toolbar",
     "django_extensions",
