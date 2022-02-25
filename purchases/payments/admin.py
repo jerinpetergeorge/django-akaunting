@@ -5,6 +5,7 @@ from .models import Payment
 
 @admin.register(Payment)
 class PaymentAdmin(admin.ModelAdmin):
+    list_display_links = ("id", "item")
     list_display = (
         "id",
         "item",
@@ -16,6 +17,7 @@ class PaymentAdmin(admin.ModelAdmin):
         "user",
     )
     readonly_fields = ["user"]
+    list_filter = ["category", "vendor", "payment_method"]
 
     def save_model(self, request, obj, form, change):
         obj.user = request.user
