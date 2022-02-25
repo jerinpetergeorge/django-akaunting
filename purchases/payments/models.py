@@ -37,15 +37,6 @@ class Payment(TimeStampedModel):
         related_query_name="payment",
         verbose_name=_("Category"),
     )
-    bill = models.ForeignKey(
-        "bills.Bill",
-        null=True,
-        blank=True,
-        on_delete=models.CASCADE,
-        related_name="payments",
-        related_query_name="payment",
-        verbose_name=_("Bill"),
-    )
     payment_method = models.CharField(
         max_length=25,
         choices=PaymentMethod.choices,

@@ -48,7 +48,6 @@ LOCAL_APPS = [
     "organizations",
     "sales.revenues",
     "sales.customers",
-    "purchases.bills",
     "purchases.vendors",
     "purchases.payments",
 ]
