@@ -24,8 +24,7 @@ class PaymentAdmin(admin.ModelAdmin):
         if not obj.attachment:
             return
         return format_html(
-            f"<a href='{obj.attachment.url}'  "
-            f"target='_blank' >{obj.attachment.name}</a>"
+            f"<a href='{obj.attachment.url}'  " f"target='_blank' >Link</a>"
         )
 
     def get_queryset(self, request):
