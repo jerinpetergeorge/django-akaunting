@@ -13,7 +13,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # if file not found, simply ignored
 env.read_env(
     root_loc=BASE_DIR,
-    env_file=env("ENV_FILE", default=".env-dir/.env.base"),
+    env_file=env("ENV_FILE", default=".env-dir/base.env"),
 )
 
 # GENERAL
