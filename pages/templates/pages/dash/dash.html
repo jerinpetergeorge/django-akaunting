@@ -1,0 +1,16 @@
+{% extends '_argon_base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+    <div class="container-fluid content-layout mt--6">
+        <div class="app">
+            <div class="row">
+                {% include "pages/dash/widgets/total_income.html" %}
+                {% include "pages/dash/widgets/total_expenses.html" %}
+                {% include "pages/dash/widgets/total_profit.html" %}
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
