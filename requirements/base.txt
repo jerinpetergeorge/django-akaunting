@@ -7,6 +7,7 @@ django-extensions~=3.1.0
 django-storages~=1.12.3
 django-taggit~=2.0.0
 django~=3.1.0
-ipython
+ipython~=7.0
 psycopg2~=2.9.2
+sentry-sdk~=1.5.6
 whitenoise==5.2.0

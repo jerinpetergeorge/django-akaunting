@@ -1,5 +1,8 @@
 from pathlib import Path
 
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+
 from utils.django_environ import environ
 
 env = environ.Env()
@@ -226,3 +229,18 @@ AWS_S3_SIGNATURE_VERSION = "s3v4"
 # https://github.com/jschneier/django-storages/issues/782
 AWS_S3_ADDRESSING_STYLE = "virtual"
 # Django Storage Settings - Ends
+
+with open(file=BASE_DIR / "VERSION.txt") as fp:
+    RELEASE_VERSION = fp.read().strip()
+APP_ENVIRONMENT = env("APP_ENVIRONMENT", default="Development")
+
+# Sentry
+# https://docs.sentry.io/platforms/python/guides/django/configuration/options/
+sentry_sdk.init(
+    dsn=env("SENTRY_DSN"),
+    release=RELEASE_VERSION,
+    environment=APP_ENVIRONMENT,
+    integrations=[DjangoIntegration()],
+    traces_sample_rate=1.0,
+    send_default_pii=True,
+)
