@@ -11,9 +11,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # option to attach an env file
 # default location is `.env-dir/local`
 # if file not found, simply ignored
-env.read_env(
-    root_loc=BASE_DIR,
-    env_file=env("ENV_FILE", default=".env-dir/base.env"),
+env.read_env_from_file(
+    project_root=BASE_DIR,
+    relative_env_file_path=env("ENV_FILE", default=".env-dir/base.env"),
 )
 
 # GENERAL
