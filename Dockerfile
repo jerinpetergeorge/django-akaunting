@@ -1,16 +1,38 @@
-# Pull base image
-FROM python:3.8
+FROM python:3.9 AS base
+
+LABEL maintainer="Jerin Peter George <jerinpetergeorge@gmail.com>"
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-# Set work directory
-WORKDIR /code
+# Create a new directory to keep the project files
+RUN mkdir /django-akaunting
 
-# Install dependencies
-COPY Pipfile Pipfile.lock /code/
-RUN pip install pipenv && pipenv install --system
+# Copy local contents into container
+COPY ./ /django-akaunting/
 
-# Copy project
-COPY . /code/
+# Setting newly created directory as PWD
+WORKDIR /django-akaunting/
+
+# Creating a non-root user
+RUN useradd -m akaunting-user
+
+# Switching the user
+USER akaunting-user
+
+# Adding user's bin path to `PATH` variable
+ENV PATH "$PATH:/home/akaunting-user/.local/bin"
+
+# Installing pip packages
+RUN pip install pip -U
+
+FROM base AS Production
+RUN pip install --no-cache-dir -r requirements/production.txt -U
+
+FROM production AS Test
+RUN pip install --no-cache-dir -r requirements/production.txt -U
+RUN pip install --no-cache-dir -r requirements/test.txt -U
+
+FROM base as Developement
+RUN pip install --no-cache-dir -r requirements/dev.txt -U
