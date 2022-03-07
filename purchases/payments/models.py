@@ -51,6 +51,7 @@ class Payment(TimeStampedModel):
         verbose_name = _("Payment")
         verbose_name_plural = _("Payments")
         db_table = "Payment"
+        ordering = ["-date"]
 
     def __str__(self):
         return f"Paid {self.amount} to {self.vendor} on {self.date}"
