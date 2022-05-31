@@ -11,6 +11,7 @@ class Category(TimeStampedModel):
         verbose_name = _("Category")
         verbose_name_plural = _("Categories")
         db_table = "Category"
+        ordering = ["name"]
 
     def __str__(self):
         return self.name
