@@ -11,6 +11,7 @@ class Organization(TimeStampedModel):
         verbose_name = _("Organization")
         verbose_name_plural = _("Organizations")
         db_table = "Organization"
+        ordering = ["name"]
 
     def __str__(self):
         return self.name

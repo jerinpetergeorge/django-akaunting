@@ -10,6 +10,7 @@ class Vendor(TimeStampedModel):
         verbose_name = _("Vendor")
         verbose_name_plural = _("Vendors")
         db_table = "Vendor"
+        ordering = ["name"]
 
     def __str__(self):
         return self.name
