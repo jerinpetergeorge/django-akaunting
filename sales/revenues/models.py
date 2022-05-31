@@ -34,7 +34,9 @@ class Revenue(TimeStampedModel):
         verbose_name=_("Category"),
     )
     attachment = models.FileField(
-        _("Attachment"), upload_to=_revenue_upload_to, blank=True
+        _("Attachment"),
+        upload_to=_revenue_upload_to,
+        blank=True,
     )
 
     class Meta:

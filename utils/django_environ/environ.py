@@ -50,7 +50,11 @@ class Env(_ENV):
 
     @classmethod
     def _read_from_file(
-        cls, file_name: str, project_root: FileLoc, current_dir: FileLoc, **overrides
+        cls,
+        file_name: str,
+        project_root: FileLoc,
+        current_dir: FileLoc,
+        **overrides,
     ):
         env_file_str = _get_nested_ebv_file(file_name)
         if env_file_str:
@@ -58,12 +62,16 @@ class Env(_ENV):
                 project_root=project_root,
                 relative_env_file_path=current_dir / env_file_str,
                 overwrite=True,
-                **overrides
+                **overrides,
             )
 
     @classmethod
     def _analyse_file_content(
-        cls, content: str, overrides: dict, project_root: FileLoc, current_dir: FileLoc
+        cls,
+        content: str,
+        overrides: dict,
+        project_root: FileLoc,
+        current_dir: FileLoc,
     ):
         for line in content.splitlines():
             match = re.match(r"\A(?:export )?([A-Za-z_0-9]+)=(.*)\Z", line)
@@ -74,7 +82,7 @@ class Env(_ENV):
                     file_name=line,
                     project_root=project_root,
                     current_dir=current_dir,
-                    **overrides
+                    **overrides,
                 )
 
             elif not line or line.startswith("#"):
@@ -87,7 +95,7 @@ class Env(_ENV):
         project_root: FileLoc,
         relative_env_file_path: FileLoc = None,
         overwrite: bool = False,
-        **overrides
+        **overrides,
     ):
         env_file = pathlib.Path(project_root) / pathlib.Path(relative_env_file_path)
 
