@@ -10,7 +10,9 @@ class Command(BaseCommand):
 
     def create_superuser(self):
         User.objects.create_superuser(
-            settings.DEV_EMAIL, settings.DEV_PASSWORD, full_name=settings.DEV_FULL_NAME
+            settings.DEV_EMAIL,
+            settings.DEV_PASSWORD,
+            full_name=settings.DEV_FULL_NAME,
         )
 
     def handle(self, *args, **options):

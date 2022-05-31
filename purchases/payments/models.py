@@ -44,7 +44,9 @@ class Payment(TimeStampedModel):
         default=PaymentMethod.BANK_TRANSFER,
     )
     attachment = models.FileField(
-        _("Attachment"), upload_to=_payment_upload_to, blank=True
+        _("Attachment"),
+        upload_to=_payment_upload_to,
+        blank=True,
     )
 
     class Meta:
