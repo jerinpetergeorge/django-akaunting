@@ -13,5 +13,9 @@ class PaymentBulkUpdateView(FormView):
         kwargs["pks"] = self.request.GET.get("pks")
         return kwargs
 
+    def form_valid(self, form: PaymentUpdateFom):
+        form.bulk_update()
+        return super().form_valid(form=form)
+
     def get_success_url(self):
         return self.request.GET.get("from", reverse("admin:index"))

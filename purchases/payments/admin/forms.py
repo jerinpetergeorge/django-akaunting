@@ -18,10 +18,10 @@ class PaymentUpdateFom(forms.ModelForm):
         model = Payment
         fields = ["vendor", "category"]
 
-    def save(self, commit=True):
+    def bulk_update(self):
         qs = Payment.objects.filter(pk__in=self.pks)
         if self.cleaned_data["vendor"]:
             qs.update(vendor=self.cleaned_data["vendor"])
 
         if self.cleaned_data["category"]:
-            qs.update(vendor=self.cleaned_data["category"])
+            qs.update(category=self.cleaned_data["category"])
