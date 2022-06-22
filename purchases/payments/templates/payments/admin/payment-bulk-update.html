@@ -2,6 +2,6 @@
 {% block content %}
     <form action="{{ request.get_full_path }}" method="post">{% csrf_token %}
         {{ form.as_p }}
-    <input type="submit" name="apply" value="Send" />
+        <input type="submit" name="apply" value="Bulk Update"/>
     </form>
 {% endblock %}
