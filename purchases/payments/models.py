@@ -48,6 +48,11 @@ class Payment(TimeStampedModel):
         upload_to=_payment_upload_to,
         blank=True,
     )
+    extra_args = models.JSONField(
+        _("Extra Arguments"),
+        default=dict,
+        blank=True,
+    )
 
     class Meta:
         verbose_name = _("Payment")
