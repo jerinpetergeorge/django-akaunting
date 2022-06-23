@@ -9,6 +9,7 @@ from ..models import Payment
 
 @admin.register(Payment)
 class PaymentAdmin(admin.ModelAdmin):
+    search_fields = ("item", "vendor__name", "category__name", "amount")
     list_display_links = ("id", "item", "file")
     list_display = (
         "id",

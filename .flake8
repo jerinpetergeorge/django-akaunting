@@ -13,3 +13,4 @@ exclude =
     .git
     */migrations/*
     scripts/*
+    sample*
