@@ -47,6 +47,7 @@ THIRD_PARTY_APPS = [
     "django_extensions",
     "taggit",
     "import_export",
+    "rangefilter",
 ]
 LOCAL_APPS = [
     "accounts",

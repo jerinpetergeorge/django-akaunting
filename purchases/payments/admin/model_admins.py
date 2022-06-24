@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.urls import path, reverse
 from django.utils.html import format_html
 from import_export.admin import ExportMixin
+from rangefilter.filters import DateRangeFilter
 
 from ..admin import views
 from ..models import Payment
@@ -25,7 +26,7 @@ class PaymentAdmin(ExportMixin, admin.ModelAdmin):
         "file",
     )
     readonly_fields = ["user"]
-    list_filter = ["category", "vendor", "payment_method"]
+    list_filter = ["category", "vendor", "payment_method", ("date", DateRangeFilter)]
 
     def get_admin_action_urls(self):
         info = self.model._meta.app_label, self.model._meta.model_name
