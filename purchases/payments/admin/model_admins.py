@@ -2,13 +2,16 @@ from django.contrib import admin
 from django.http import HttpResponseRedirect
 from django.urls import path, reverse
 from django.utils.html import format_html
+from import_export.admin import ExportMixin
 
 from ..admin import views
 from ..models import Payment
+from .resource import PaymentResource
 
 
 @admin.register(Payment)
-class PaymentAdmin(admin.ModelAdmin):
+class PaymentAdmin(ExportMixin, admin.ModelAdmin):
+    resource_class = PaymentResource
     search_fields = ("item", "vendor__name", "category__name", "amount")
     list_display_links = ("id", "item", "file")
     list_display = (

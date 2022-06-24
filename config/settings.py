@@ -46,6 +46,7 @@ THIRD_PARTY_APPS = [
     "debug_toolbar",
     "django_extensions",
     "taggit",
+    "import_export",
 ]
 LOCAL_APPS = [
     "accounts",
