@@ -24,3 +24,9 @@ class PaymentResource(resources.ModelResource):
             "vendor",
             "payment_method",
         )
+
+    def dehydrate_vendor(self, payment: Payment):
+        return payment.vendor.name
+
+    def dehydrate_category(self, payment: Payment):
+        return payment.category.name
