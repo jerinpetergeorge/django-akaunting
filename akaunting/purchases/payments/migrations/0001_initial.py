@@ -4,7 +4,7 @@ from django.conf import settings
 from django.db import migrations, models
 import django.db.models.deletion
 import django_extensions.db.fields
-import purchases.payments.models
+import akaunting.purchases.payments.models
 
 
 class Migration(migrations.Migration):
@@ -28,7 +28,7 @@ class Migration(migrations.Migration):
                 ('date', models.DateField(verbose_name='Date')),
                 ('description', models.TextField(blank=True, verbose_name='Description')),
                 ('payment_method', models.CharField(choices=[('cash', 'Cash'), ('bank_transfer', 'Bank Transfer')], default='bank_transfer', max_length=25)),
-                ('attachment', models.FileField(blank=True, upload_to=purchases.payments.models._payment_upload_to, verbose_name='Attachment')),
+                ('attachment', models.FileField(blank=True, upload_to=akaunting.purchases.payments.models._payment_upload_to, verbose_name='Attachment')),
                 ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='payments', related_query_name='payment', to='categories.category', verbose_name='Category')),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='payments', related_query_name='payment', to=settings.AUTH_USER_MODEL, verbose_name='User')),
                 ('vendor', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='payments', related_query_name='payment', to='vendors.vendor', verbose_name='Vendor')),

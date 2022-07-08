@@ -53,12 +53,12 @@ LOCAL_APPS = [
     "accounts",
     "pages",
     "utils",
-    "categories",
-    "organizations",
-    "sales.revenues",
-    "sales.customers",
-    "purchases.vendors",
-    "purchases.payments",
+    "akaunting.categories",
+    "akaunting.organizations",
+    "akaunting.sales.revenues",
+    "akaunting.sales.customers",
+    "akaunting.purchases.vendors",
+    "akaunting.purchases.payments",
 ]
 INSTALLED_APPS = [
     "django.contrib.admin",
