@@ -7,6 +7,7 @@ from rangefilter.filters import DateRangeFilter
 
 from ..admin import views
 from ..models import Payment
+from .filters import FileFilter
 from .resource import PaymentResource
 
 
@@ -26,7 +27,13 @@ class PaymentAdmin(ExportMixin, admin.ModelAdmin):
         "file",
     )
     readonly_fields = ["user"]
-    list_filter = ["category", "vendor", "payment_method", ("date", DateRangeFilter)]
+    list_filter = [
+        "category",
+        "vendor",
+        "payment_method",
+        ("date", DateRangeFilter),
+        FileFilter,
+    ]
 
     def get_admin_action_urls(self):
         info = self.model._meta.app_label, self.model._meta.model_name
