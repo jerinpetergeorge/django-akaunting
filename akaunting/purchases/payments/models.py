@@ -3,9 +3,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django_extensions.db.models import TimeStampedModel
 
-
-def _payment_upload_to(instance: "Payment", filename: str):
-    return f"{settings.MEDIA_ROOT}{instance.user_id}/payment/{filename}"
+from akaunting.settings import akaunting_settings
 
 
 class Payment(TimeStampedModel):
@@ -45,7 +43,7 @@ class Payment(TimeStampedModel):
     )
     attachment = models.FileField(
         _("Attachment"),
-        upload_to=_payment_upload_to,
+        upload_to=akaunting_settings.PAYMENT_ATTACHMENT_UPLOAD_TO,
         blank=True,
     )
     extra_args = models.JSONField(
@@ -55,6 +53,7 @@ class Payment(TimeStampedModel):
     )
 
     class Meta:
+        abstract = akaunting_settings.PAYMENT_MODEL_ABSTRACT
         verbose_name = _("Payment")
         verbose_name_plural = _("Payments")
         db_table = "Payment"
