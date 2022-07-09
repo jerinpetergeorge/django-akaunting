@@ -49,16 +49,18 @@ THIRD_PARTY_APPS = [
     "import_export",
     "rangefilter",
 ]
+AKAUNTING_APPS = [
+    "akaunting.categories",
+    "akaunting.organizations",
+    "akaunting.sales.revenues",
+    "akaunting.sales.customers",
+    "akaunting.purchases.vendors",
+    "akaunting.purchases.payments",
+]
 LOCAL_APPS = [
     "accounts",
     "pages",
     "utils",
-    "categories",
-    "organizations",
-    "sales.revenues",
-    "sales.customers",
-    "purchases.vendors",
-    "purchases.payments",
 ]
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -72,6 +74,8 @@ INSTALLED_APPS = [
     *THIRD_PARTY_APPS,
     # Local
     *LOCAL_APPS,
+    # Akaunting Apps
+    *AKAUNTING_APPS,
 ]
 
 # MIDDLEWARE

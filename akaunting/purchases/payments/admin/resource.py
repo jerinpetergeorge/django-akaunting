@@ -1,6 +1,6 @@
 from import_export import resources
 
-from purchases.payments.models import Payment
+from ..models import Payment
 
 
 class PaymentResource(resources.ModelResource):

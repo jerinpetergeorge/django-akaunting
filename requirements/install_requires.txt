@@ -1,0 +1,6 @@
+django
+django-admin-rangefilter
+django-allauth
+django-crispy-forms
+django-import-export
+djangorestframework

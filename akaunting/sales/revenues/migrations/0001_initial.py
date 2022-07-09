@@ -4,7 +4,7 @@ from django.conf import settings
 from django.db import migrations, models
 import django.db.models.deletion
 import django_extensions.db.fields
-import sales.revenues.models
+import akaunting.sales.revenues.models
 
 
 class Migration(migrations.Migration):
@@ -27,7 +27,7 @@ class Migration(migrations.Migration):
                 ('amount', models.FloatField(verbose_name='Amount')),
                 ('date', models.DateField(verbose_name='Date')),
                 ('description', models.TextField(blank=True, verbose_name='Description')),
-                ('attachment', models.FileField(blank=True, upload_to=sales.revenues.models._revenue_upload_to, verbose_name='Attachment')),
+                ('attachment', models.FileField(blank=True, upload_to=akaunting.sales.revenues.models._revenue_upload_to, verbose_name='Attachment')),
                 ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='revenues', related_query_name='revenue', to='categories.category', verbose_name='Category')),
                 ('customer', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='revenues', related_query_name='revenue', to='customers.customer', verbose_name='Customer')),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='revenues', related_query_name='revenue', to=settings.AUTH_USER_MODEL, verbose_name='User')),
