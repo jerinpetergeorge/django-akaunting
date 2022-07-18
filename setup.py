@@ -1,10 +1,9 @@
 from codecs import open
 from os import path
 
-from setuptools import setup
+from setuptools import find_packages, setup
 
 here = path.abspath(path.dirname(__file__))
-
 
 # Get the version from Version.txt
 with open("VERSION.txt") as fp:
@@ -20,15 +19,18 @@ dependency_links = [
     x.strip().replace("git+", "") for x in all_reqs if x.startswith("git+")
 ]
 
-
+root_package = "akaunting"
+_find_packages = [
+    f"{root_package}.{item}" for item in find_packages(where=root_package)
+]
+packages = [root_package, *_find_packages]
 setup(
     name="django-akaunting",
     version=__version__,
     description="A Django version of Akaunting",
     long_description="",
     license="BSD",
-    packages=["akaunting"],
-    package_dir={"akaunting": "akaunting"},
+    packages=packages,
     include_package_data=True,
     author="Jerin Peter George",
     author_email="jerinpetergeorge@gmail.com",
