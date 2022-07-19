@@ -56,6 +56,7 @@ AKAUNTING_APPS = [
     "akaunting.sales.customers",
     "akaunting.purchases.vendors",
     "akaunting.purchases.payments",
+    "akaunting.broadcasting.events",
 ]
 LOCAL_APPS = [
     "accounts",
