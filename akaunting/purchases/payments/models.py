@@ -53,7 +53,7 @@ class Payment(TimeStampedModel):
     )
 
     class Meta:
-        abstract = akaunting_settings.PAYMENT_MODEL_ABSTRACT
+        abstract = "Payment" in akaunting_settings.ABSTRACT_MODELS
         verbose_name = _("Payment")
         verbose_name_plural = _("Payments")
         db_table = "Payment"

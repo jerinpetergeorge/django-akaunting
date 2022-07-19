@@ -3,6 +3,8 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django_extensions.db.models import TimeStampedModel
 
+from akaunting.settings import akaunting_settings
+
 
 def _revenue_upload_to(instance: "Revenue", filename: str):
     return f"{settings.MEDIA_ROOT}{instance.user_id}/revenue/{filename}"
@@ -40,6 +42,7 @@ class Revenue(TimeStampedModel):
     )
 
     class Meta:
+        abstract = "Revenue" in akaunting_settings.ABSTRACT_MODELS
         verbose_name = _("Revenue")
         verbose_name_plural = _("Revenues")
         db_table = "Revenues"
